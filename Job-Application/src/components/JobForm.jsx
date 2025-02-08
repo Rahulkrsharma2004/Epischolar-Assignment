@@ -1,7 +1,10 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useJobContext } from '../context/JobContext'; 
 
 export default function JobForm({ jobId, onSubmit }) {
+  const { applyForJob } = useJobContext();
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -14,8 +17,9 @@ export default function JobForm({ jobId, onSubmit }) {
       resume: Yup.string().required('Required'),
     }),
     onSubmit: (values) => {
-      onSubmit({ ...values, jobId });
+      applyForJob({ ...values, jobId });
       formik.resetForm();
+      alert("Job submitted successfully")
     },
   });
 
@@ -54,7 +58,7 @@ export default function JobForm({ jobId, onSubmit }) {
         {formik.errors.resume && <p className="text-red-500">{formik.errors.resume}</p>}
       </div>
       <button type="submit" className="bg-blue-500 text-white p-2 rounded-lg">
-        Apply
+        Submit
       </button>
     </form>
   );

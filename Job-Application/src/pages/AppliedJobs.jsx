@@ -2,18 +2,36 @@ import { useJobContext } from '../context/JobContext';
 
 export default function AppliedJobs() {
   const { appliedJobs } = useJobContext();
+  if (!appliedJobs) return <div>Loading...</div>;
+  console.log(JSON.stringify(appliedJobs,1));
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Applied Jobs</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {appliedJobs.map((job) => (
-          <div key={job.id} className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-bold text-gray-800 dark:text-white">{job.title}</h2>
-            <p className="text-gray-600 dark:text-gray-300 mt-2">{job.company}</p>
+    <div className="space-y-4">
+      <h2 className="text-xl font-bold">Applied Jobs</h2>
+      {appliedJobs.length === 0 ? (
+        <p>No jobs applied yet.</p>
+      ) : (
+        appliedJobs.map((application, index) => (
+          <div key={index} className="p-4 border rounded-lg shadow-md">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+              Job Details:
+            </h3>
+            <p><strong>Job Title:</strong> {application.title}</p>
+            <p><strong>Company:</strong> {application.company}</p>
+            <p><strong>Location:</strong> {application.location}</p>
+            <p><strong>Salary:</strong> {application.salary}</p>
+            <p><strong>Job Type:</strong> {application.jobType}</p>
+            <p><strong>Rating:</strong> {application.rating} / 5.0</p>
+
+            <h3 className="mt-4 text-lg font-semibold text-gray-800 dark:text-white">
+              Applicant Details:
+            </h3>
+            <p><strong>Name:</strong> {application.name}</p>
+            <p><strong>Email:</strong> {application.email}</p>
+            <p><strong>Resume:</strong> {application.resume}</p>
           </div>
-        ))}
-      </div>
+        ))
+      )}
     </div>
   );
 }

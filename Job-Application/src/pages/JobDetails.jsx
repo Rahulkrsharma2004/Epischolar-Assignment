@@ -15,7 +15,8 @@ export default function JobDetails() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">{job.title}</h1>
-      <p className="text-gray-600 dark:text-gray-300 mb-4">{job.description}</p>
+      <p className="text-gray-600 dark:text-gray-300 mb-4">{job.company}</p>
+      <p className="text-gray-600 dark:text-gray-300 mb-4">📍 {job.location}</p>
       <JobForm jobId={job.id} onSubmit={applyForJob} />
     </div>
   );

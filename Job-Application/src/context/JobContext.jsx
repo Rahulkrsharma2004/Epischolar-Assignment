@@ -6,7 +6,7 @@ export const JobProvider = ({ children }) => {
   const [appliedJobs, setAppliedJobs] = useState([]);
 
   const applyForJob = (application) => {
-    setAppliedJobs([...appliedJobs, application]);
+    setAppliedJobs((prevAppliedJobs) => [...prevAppliedJobs, application]);
   };
 
   return (
