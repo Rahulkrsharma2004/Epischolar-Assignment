@@ -13,16 +13,10 @@ export default function JobCard({ job = {} }) {
   } = job;
 
   return (
-    <div className="bg-yellow-100 dark:bg-black-800 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="flex items-start mb-4">
-        {/* Add this back if needed */}
-        {/* <img
-          src={job.companyLogo || "/placeholder.svg"}
-          alt={`${job.company || "Company"} logo`}
-          className="w-12 h-12 rounded-lg mr-4"
-        /> */}
         <div>
-          <h2 className="text-lg font-semibold text-gray-900 mb-1">{title}</h2>
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{title}</h2>
           <div className="flex items-center">
             <div className="flex items-center mr-2">
               {[1, 2, 3, 4, 5].map((star) => (
@@ -34,27 +28,29 @@ export default function JobCard({ job = {} }) {
                 />
               ))}
             </div>
-            <span className="text-sm text-gray-500">({reviews} Reviews)</span>
+            <span className="text-sm text-gray-500 dark:text-gray-300">({reviews} Reviews)</span>
           </div>
         </div>
       </div>
 
       <div className="flex flex-wrap gap-2 mb-4">
-        <span className="px-3 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded-full">
+        <span className="px-3 py-1 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white text-xs font-medium rounded-full">
           {location}
         </span>
         {Array.isArray(tags) &&
           tags.map((tag, index) => (
-            <span key={index} className="px-3 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded-full">
+            <span
+              key={index}
+              className="px-3 py-1 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white text-xs font-medium rounded-full"
+            >
               {tag}
             </span>
           ))}
       </div>
 
-      <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+      <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-600">
         <div>
-          <span className="text-lg font-semibold text-gray-900">{salary}</span>
-          {/* <span className="text-gray-500 text-sm">/{salaryPeriod}</span> */}
+          <span className="text-lg font-semibold text-gray-900 dark:text-white">{salary}</span>
         </div>
         {id && (
           <Link

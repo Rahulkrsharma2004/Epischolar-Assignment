@@ -13,9 +13,9 @@ export default function AppliedJobs() {
         appliedJobs.map((application, index) => (
           <div key={index} className="p-6 border rounded-lg shadow-lg bg-white dark:bg-gray-800">
             <h3 className="mt-4 text-lg font-semibold text-gray-800 dark:text-white">Applicant Details:</h3>
-            <p className="mt-2"><strong>Name:</strong> {application.name}</p>
-            <p className="mt-1"><strong>Email:</strong> {application.email}</p>
-            <p className="mt-1"><strong>Resume:</strong> {application.resume}</p>
+            <p className="mt-2 dark:text-white"><strong>Name:</strong> {application.name}</p>
+            <p className="mt-1 dark:text-white"><strong>Email:</strong> {application.email}</p>
+            <p className="mt-1 dark:text-white"><strong>Resume:</strong> {application.resume}</p>
           </div>
         ))
       )}

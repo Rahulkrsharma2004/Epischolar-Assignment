@@ -24,7 +24,7 @@ export default function JobForm({ jobId, onSubmit }) {
   });
 
   return (
-    <div className="flex items-center justify-center  bg-gray-100 dark:bg-gray-900">
+    <div className="flex items-center justify-center  dark:bg-gray-900">
       <form onSubmit={formik.handleSubmit} className="w-full max-w-md p-6 space-y-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
         <div>
           <label className="block text-gray-700 dark:text-gray-300">Name</label>
