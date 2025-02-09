@@ -16,9 +16,10 @@ const Navbar = () => {
 
   return (
     <nav className="bg-[#171923] text-white fixed top-0 left-0 w-full z-50">
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center py-2">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-2">
+        {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-white">
-          <svg
+        <svg
             width="146"
             height="50"
             viewBox="0 0 146 50"
@@ -59,7 +60,9 @@ const Navbar = () => {
             />
           </svg>
         </Link>
-        <div className="hidden md:flex space-x-8 px-6 items-center">
+
+        {/* Desktop Links */}
+        <div className="hidden md:flex space-x-8 items-center">
           <Link to="/" className="text-white hover:text-white/80 font-medium">
             Find Job
           </Link>
@@ -79,14 +82,15 @@ const Navbar = () => {
             Applied Job
           </Link>
         </div>
-        <div className="md:flex items-center space-x-6">
-          <div className="flex items-center space-x-2">
-           <ThemeToggle/>
+
+        <div className="flex items-center space-x-6">
+          <div className="md:flex items-center space-x-2">
+            <ThemeToggle />
             <span className="text-sm">Theme</span>
           </div>
-          <Settings className="w-5 h-5 text-gray-400 hover:text-white cursor-pointer" />
-          <Bell className="w-5 h-5 text-gray-400 hover:text-white cursor-pointer" />
-          <div className="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center">
+          <Settings className="md:flex hidden w-5 h-5 text-gray-400 hover:text-white cursor-pointer" />
+          <Bell className="md:flex hidden w-5 h-5 text-gray-400 hover:text-white cursor-pointer" />
+          <div className="md:flex hidden w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center">
             <User className="w-5 h-5 text-gray-400" />
           </div>
           <button
@@ -115,16 +119,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* <div className="hidden md:flex space-x-8 px-6">
-        <Link to="/find-job" className="text-white hover:text-white/80 font-medium">Find Job</Link>
-        <Link to="/messages" className="text-white hover:text-white/80 font-medium">Messages</Link>
-        <Link to="/hiring" className="text-white hover:text-white/80 font-medium">Hiring</Link>
-        <Link to="/community" className="text-white hover:text-white/80 font-medium">Community</Link>
-        <Link to="/faq" className="text-white hover:text-white/80 font-medium">FAQ</Link>
-      </div> */}
-
-      <div className="hidden md:flex justify-between items-center py-4 text-white border-t border-gray-800 mt-4 px-6">
-        {/* Filters Section */}
+      <div className="hidden md:flex justify-between items-center py-4 text-white border-t border-gray-800 mt-4 px-4 sm:px-6 lg:px-8">
         <div className="flex space-x-4">
           <div className="relative flex items-center">
             <Search className="absolute left-3 w-4 h-4 text-gray-400" />
@@ -158,7 +153,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Salary Range Section */}
         <div className="flex items-center space-x-4">
           <span className="text-sm text-gray-400">Salary Range</span>
           <div className="flex items-center space-x-2">
@@ -178,24 +172,30 @@ const Navbar = () => {
 
       {isMenuOpen && (
         <div className="md:hidden bg-[#1A202C] mt-2 p-4 space-y-4 rounded-md border border-gray-700">
-          <Link to="/find-job" className="block text-gray-300 hover:text-white">
+          <Link to="/" className="block text-gray-300 hover:text-white">
             Find Job
           </Link>
-          <Link to="/messages" className="block text-gray-300 hover:text-white">
+          <Link to="/" className="block text-gray-300 hover:text-white">
             Messages
           </Link>
-          <Link to="/hiring" className="block text-gray-300 hover:text-white">
+          <Link to="/" className="block text-gray-300 hover:text-white">
             Hiring
           </Link>
           <Link
-            to="/community"
+            to="/"
             className="block text-gray-300 hover:text-white"
           >
             Community
           </Link>
-          <Link to="/faq" className="block text-gray-300 hover:text-white">
-            FAQ
+          <div>
+            <Link
+            to="/applied-jobs"
+            className="bg-blue-600 text-white  py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 font-medium shadow-md"
+          >
+            Applied Job
           </Link>
+          </div>
+          
         </div>
       )}
     </nav>

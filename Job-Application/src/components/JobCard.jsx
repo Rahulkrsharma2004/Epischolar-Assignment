@@ -13,7 +13,7 @@ export default function JobCard({ job = {} }) {
   } = job;
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="bg-yellow-100 dark:bg-gray-800 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="flex items-start mb-4">
         <div>
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{title}</h2>
