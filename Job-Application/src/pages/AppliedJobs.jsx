@@ -6,14 +6,14 @@ export default function AppliedJobs() {
   console.log(JSON.stringify(appliedJobs,1));
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 py-40">
       <h2 className="text-xl font-bold">Applied Jobs</h2>
       {appliedJobs.length === 0 ? (
         <p>No jobs applied yet.</p>
       ) : (
         appliedJobs.map((application, index) => (
           <div key={index} className="p-4 border rounded-lg shadow-md">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+            {/* <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
               Job Details:
             </h3>
             <p><strong>Job Title:</strong> {application.title}</p>
@@ -21,7 +21,7 @@ export default function AppliedJobs() {
             <p><strong>Location:</strong> {application.location}</p>
             <p><strong>Salary:</strong> {application.salary}</p>
             <p><strong>Job Type:</strong> {application.jobType}</p>
-            <p><strong>Rating:</strong> {application.rating} / 5.0</p>
+            <p><strong>Rating:</strong> {application.rating} / 5.0</p> */}
 
             <h3 className="mt-4 text-lg font-semibold text-gray-800 dark:text-white">
               Applicant Details:

@@ -1,35 +1,70 @@
 import { Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export default function JobCard({ job }) {
+export default function JobCard({ job = {} }) {
+  const {
+    title = "No Title Available",
+    rating = 0,
+    reviews = 0,
+    location = "Not Specified",
+    tags = [],
+    salary = "N/A",
+    id = "",
+  } = job;
+
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md w-full max-w-sm hover:shadow-xl transition-shadow duration-300">
-      <div className="flex items-center mb-4">
+    <div className="bg-yellow-100 dark:bg-black-800 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+      <div className="flex items-start mb-4">
+        {/* Add this back if needed */}
+        {/* <img
+          src={job.companyLogo || "/placeholder.svg"}
+          alt={`${job.company || "Company"} logo`}
+          className="w-12 h-12 rounded-lg mr-4"
+        /> */}
         <div>
-          <h2 className="text-xl font-bold text-gray-800 dark:text-white">
-            {job.title}
-          </h2>
-          <p className="text-gray-600 dark:text-gray-100">{job.company}</p>
+          <h2 className="text-lg font-semibold text-gray-900 mb-1">{title}</h2>
+          <div className="flex items-center">
+            <div className="flex items-center mr-2">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Star
+                  key={star}
+                  className={`h-4 w-4 ${
+                    star <= rating ? "text-yellow-400 fill-current" : "text-gray-300"
+                  }`}
+                />
+              ))}
+            </div>
+            <span className="text-sm text-gray-500">({reviews} Reviews)</span>
+          </div>
         </div>
       </div>
 
-      <div className="text-sm text-gray-600 dark:text-gray-100 space-y-2">
-        <p className="flex items-center">
-          <Star className="h-4 w-4 text-yellow-400 mr-1" /> {job.rating} / 5.0
-        </p>
-        <p className="flex items-center">📍 {job.location}</p>
-        <p>💼 {job.jobType}</p>
-        <p>💰 {job.salary}</p>
+      <div className="flex flex-wrap gap-2 mb-4">
+        <span className="px-3 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded-full">
+          {location}
+        </span>
+        {Array.isArray(tags) &&
+          tags.map((tag, index) => (
+            <span key={index} className="px-3 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded-full">
+              {tag}
+            </span>
+          ))}
       </div>
 
-      <Link
-        to={`/jobs/${job.id}`}
-        className="block mt-4 text-blue-600 dark:text-blue-400 font-medium hover:underline"
-      >
-        <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
-          Apply Now
-        </button>
-      </Link>
+      <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+        <div>
+          <span className="text-lg font-semibold text-gray-900">{salary}</span>
+          {/* <span className="text-gray-500 text-sm">/{salaryPeriod}</span> */}
+        </div>
+        {id && (
+          <Link
+            to={`/jobs/${id}`}
+            className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition duration-300"
+          >
+            Apply
+          </Link>
+        )}
+      </div>
     </div>
   );
 }
